@@ -1,0 +1,64 @@
+<mat-card>
+	<mat-card-header>
+		<mat-card-title>Vital Signs Intake</mat-card-title>
+	</mat-card-header>
+	<mat-card-content>
+		<form [formGroup]="intakeForm">
+			<mat-accordion>
+				<mat-expansion-panel>
+					<mat-expansion-panel-header>
+						<mat-panel-title>Body Temperature</mat-panel-title>
+					</mat-expansion-panel-header>
+					<mat-form-field>
+						<input matInput placeholder="Body Temperature" type="number" min="0" max="200" formControlName="bodyTemperature">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Unit</mat-label>
+          <mat-select formControlName="bodyTemperatureUnit">
+            <mat-option *ngFor="let unit of tempUnits" [value]="unit">{{unit}}</mat-option>
+          </mat-select>
+        </mat-form-field>        
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Body Weight</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-form-field>
+          <input matInput placeholder="Body Weight" type="number" min="0" formControlName="bodyWeight">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Unit</mat-label>
+          <mat-select formControlName="bodyWeightUnit">
+            <mat-option *ngFor="let unit of weightUnits" [value]="unit">{{unit}}</mat-option>
+          </mat-select>
+        </mat-form-field>  
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Pulse</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-form-field>
+          <input matInput placeholder="Pulse (bpm)" type="number" min="0" formControlName="pulse">
+        </mat-form-field>
+      </mat-expansion-panel>
+      <mat-expansion-panel disabled>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Blood Pressure
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+          <mat-form-field>
+          <input matInput placeholder="Systolic" type="number" min="0" formControlName="systolicBP">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Diastolic" type="number" min="0" formControlName="diastolicBP">
+        </mat-form-field>
+      </mat-expansion-panel>
+    </mat-accordion>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button type="submit" (click)="submitForm()">Save</button>
+    <button mat-button (click)="clearForm()">Clear</button>
+  </mat-card-actions>
+</mat-card>
